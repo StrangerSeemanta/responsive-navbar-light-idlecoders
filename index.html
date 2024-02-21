@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Responsive Navbar</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-container">
+        <div class="logo">Idle Coders</div>
+      </div>
+      <ul>
+        <li class="active navLink">Home</li>
+        <li class="navLink">About</li>
+        <li class="navLink">Contact</li>
+        <li class="navLink">Sign Up</li>
+      </ul>
+      <div class="mobile-menu-container drawer" onclick="handleDrawer()">
+        <div class="menuIcon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Drawer -->
+    <div class="sidebar-container">
+      <div class="sidebar">
+        <div class="sidebarCloseBtn" onclick="handleDrawer()"></div>
+        <div class="sidebar-title">Idle Coders</div>
+        <ul>
+          <li class="active navLink">Home</li>
+          <li class="navLink">About</li>
+          <li class="navLink">Contact</li>
+          <li class="navLink">Sign Up</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="root"></div>
+  </body>
+
+  <script>
+    const activeLists = document.querySelectorAll("li.navLink");
+
+    activeLists.forEach((elem) => {
+      elem.addEventListener("click", function () {
+        activeLists.forEach((otherElem) => {
+          otherElem.classList.remove("active");
+        });
+
+        elem.classList.add("active");
+      });
+    });
+
+    function handleDrawer() {
+      document.querySelector(".menuIcon").classList.toggle("open");
+      document.querySelector(".sidebar-container").classList.toggle("show");
+    }
+  </script>
+</html>
